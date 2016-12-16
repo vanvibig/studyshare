@@ -11,7 +11,7 @@
 	<title>Title</title>
 </head>
 <body>
-	<form style="text-align: center" action="ducky" method="post">
+	<form style="text-align: center" action="login" method="post">
 		Username: <input type="text" name="username" value="">
 		Password: <input type="password" name="password" value="">
 		<input type="submit" value="Ok">
