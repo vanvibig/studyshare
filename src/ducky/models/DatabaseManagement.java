@@ -6,7 +6,7 @@ package ducky.models;
 
 public class DatabaseManagement{
 	public boolean checkUser(String username, String password){
-		if(username.equals("Ducky") && password.equals("FunnyGuy")){
+		if(username.equals("Ducky") && password.equals("Ducky")){
 			return true;
 		}else{
 			return false;

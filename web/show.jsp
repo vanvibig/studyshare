@@ -11,6 +11,8 @@
 	<title>Title</title>
 </head>
 <body>
+	This image is: <%= request.getAttribute("imageName") %>
+	<br>
 	<img src="images/003.jpg" alt="This is a show">
 </body>
 </html>
