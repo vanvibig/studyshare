@@ -10,7 +10,7 @@ import java.io.PrintWriter;
 /**
  * Created by KV on 16/12/2016.
  */
-@WebServlet(description = "This is a demo", urlPatterns = {"/hello"})
+@WebServlet("/hello")
 public class HelloWorld extends HttpServlet {
 
 	public HelloWorld(){
@@ -18,12 +18,10 @@ public class HelloWorld extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, java.io.IOException {
-		PrintWriter writer = response.getWriter();
-		writer.println("Hello World");
-		writer.println("a   KVvvvv");
+
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, java.io.IOException {
-
+		response.getWriter().println("Hello KV");
 	}
 }
