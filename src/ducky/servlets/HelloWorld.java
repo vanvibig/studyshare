@@ -1,5 +1,7 @@
 package ducky.servlets;
 
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +27,19 @@ public class HelloWorld extends HttpServlet {
 	}
 
 	protected void loadParameter(HttpServletRequest request, HttpServletResponse response, String method) throws ServletException, java.io.IOException {
+		ServletConfig config = this.getServletConfig();
+		String song = config.getInitParameter("song");
 		PrintWriter writer = response.getWriter();
-		writer.println("Hello World" + method + "<br>");
+		writer.println("Hello World " + method + "\n");
+		writer.println("The song is: " + song);
+
+		ServletContext context = this.getServletContext();
+		this.getServletConfig().getServletContext();
+		String account = context.getInitParameter("account");
+		String pass = context.getInitParameter("pass");
+		writer.println("Account: " + account);
+		writer.println("Pass: " + pass);
+
+
 	}
 }

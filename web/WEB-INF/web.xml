@@ -3,11 +3,26 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+	
+	<context-param>
+		<param-name>account</param-name>
+		<param-value>ducky</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>pass</param-name>
+		<param-value>2013</param-value>
+	</context-param>
+
 
 	<!--servlet-->
 	<servlet>
 		<servlet-name>Hello World</servlet-name>
 		<servlet-class>ducky.servlets.HelloWorld</servlet-class>
+		<init-param>
+			<param-name>song</param-name>
+			<param-value>I am yours</param-value>
+		</init-param>
 	</servlet>
 
 	<servlet-mapping>
@@ -25,10 +40,6 @@
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
 
-	<servlet>
-		<servlet-name>DatabaseManagement</servlet-name>
-		<servlet-class>ducky.models.DatabaseManagement</servlet-class>
-	</servlet>
 	<!--end servlet-->
 
 	<!--jsp-->
