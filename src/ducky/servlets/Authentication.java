@@ -1,5 +1,7 @@
 package ducky.servlets;
 
+import ducky.models.DatabaseManagement;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +20,8 @@ public class Authentication extends HttpServlet {
 		String password = request.getParameter("password");
 		PrintWriter writer = response.getWriter();
 
-		if(username.equals("Ducky") && password.equals("FunnyGuy")){
+		DatabaseManagement dm = new DatabaseManagement();
+		if(dm.checkUser(username,password)){
 			writer.println("Wellcome " + username + " to website!!!");
 		}else{
 			writer.print("Username of Password is incorrect!");
