@@ -1,10 +1,15 @@
 package ducky.models;
 
+import javax.servlet.http.HttpSessionActivationListener;
+import javax.servlet.http.HttpSessionBindingEvent;
+import javax.servlet.http.HttpSessionBindingListener;
+import javax.servlet.http.HttpSessionEvent;
+
 /**
  * Created by KV on 17/12/2016.
  */
 
-public class Image {
+public class Image implements HttpSessionBindingListener, HttpSessionActivationListener {
 	private String name;
 	private int width, height;
 
@@ -36,5 +41,25 @@ public class Image {
 
 	public void setHeight(int height) {
 		this.height = height;
+	}
+
+	@Override
+	public void valueBound(HttpSessionBindingEvent event) {
+		event.getSession().getServletContext().log("Image in the session" + getName());
+	}
+
+	@Override
+	public void valueUnbound(HttpSessionBindingEvent event) {
+		event.getSession().getServletContext().log("Image out the session" + getName());
+	}
+
+	@Override
+	public void sessionWillPassivate(HttpSessionEvent httpSessionEvent) {
+
+	}
+
+	@Override
+	public void sessionDidActivate(HttpSessionEvent httpSessionEvent) {
+
 	}
 }

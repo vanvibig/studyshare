@@ -27,6 +27,10 @@ public class Authentication extends HttpServlet {
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/imageshow");
 			Image image = new Image("Baby",200,300);
 			request.setAttribute("imageName", image);
+
+			session.setAttribute("test", new Image("Testing image",200,300));
+			session.removeAttribute("test");
+
 			requestDispatcher.forward(request,response);
 		}else{
 			response.sendRedirect("login.jsp");
