@@ -1,12 +1,11 @@
 package ducky.servlets;
 
 import ducky.models.DatabaseManagement;
+import ducky.models.Image;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 
 /**
  * Created by KV on 16/12/2016.
@@ -20,9 +19,14 @@ public class Authentication extends HttpServlet {
 
 		DatabaseManagement dm = new DatabaseManagement();
 		if(dm.checkUser(username,password)){
-			request.setAttribute("username", username);
+			Cookie cookie = new Cookie("location","Vietnam");
+			response.addCookie(cookie);
+			HttpSession session = request.getSession();
+			session.setMaxInactiveInterval(900);
+			session.setAttribute("username", username);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/imageshow");
-			request.setAttribute("imageName", "Baby");
+			Image image = new Image("Baby",200,300);
+			request.setAttribute("imageName", image);
 			requestDispatcher.forward(request,response);
 		}else{
 			response.sendRedirect("login.jsp");

@@ -3,9 +3,7 @@ package ducky.servlets;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.ObjectInput;
 
@@ -23,11 +21,17 @@ public class ImageShow extends HttpServlet {
 	}
 
 	private void doCheck(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = (String) request.getAttribute("username");
+		HttpSession session = request.getSession();
+		String username = (String) session.getAttribute("username");
+		session.invalidate();
 		if (username == null){
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
 			requestDispatcher.forward(request,response);
 		}else {
+			for (Cookie e: request.getCookies()){
+				System.out.println(e.getName());
+				System.out.println(e.getValue());
+			}
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("crocodile.jsp");
 			requestDispatcher.forward(request,response);
 		}
