@@ -54,6 +54,11 @@
 	<servlet>
 		<servlet-name>Sample jsp</servlet-name>
 		<jsp-file>/process/sample.jsp</jsp-file>
+		
+		<init-param>
+			<param-name>blog</param-name>
+			<param-value>Study And Share</param-value>
+		</init-param>
 	</servlet>
 
 	<servlet-mapping>

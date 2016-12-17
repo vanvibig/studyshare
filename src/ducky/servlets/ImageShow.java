@@ -32,6 +32,12 @@ public class ImageShow extends HttpServlet {
 				System.out.println(e.getName());
 				System.out.println(e.getValue());
 			}
+
+			this.getServletContext().setAttribute("otherScope", "Application Scope");
+
+//			session.setAttribute("otherScope", "Request Scope");
+			request.setAttribute("otherScope", "Session Scope");
+
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("crocodile.jsp");
 			requestDispatcher.forward(request,response);
 		}
