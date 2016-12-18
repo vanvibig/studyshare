@@ -1,5 +1,7 @@
 package ducky.servlets;
 
+import ducky.models.Student;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,6 +40,9 @@ public class ImageShow extends HttpServlet {
 //			session.setAttribute("otherScope", "Request Scope");
 			request.setAttribute("otherScope", "Session Scope");
 
+			Student student = new Student();
+			student.setName("Clover");
+			request.setAttribute("student",student);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("crocodile.jsp");
 			requestDispatcher.forward(request,response);
 		}
